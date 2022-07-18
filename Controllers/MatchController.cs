@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 using Kolaczyn.Models;
-using Kolaczyn.Extensions;
+using Kolaczyn.Mapper;
 
 namespace Kolaczyn.Controllers;
 
@@ -19,7 +19,7 @@ public class MatchController : ControllerBase
   [HttpGet(Name = "Match")]
   public UserDto Get()
   {
-    return PortalUsers[1].ToDto();
+    return PortalUsers[1].MapToDto();
 
   }
 }
