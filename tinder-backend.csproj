@@ -4,7 +4,7 @@
     <TargetFramework>net6.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
-    <RootNamespace>tinder_backend</RootNamespace>
+    <RootNamespace>Kolaczyn</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>

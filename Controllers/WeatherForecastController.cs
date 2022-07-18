@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 
-namespace tinder_backend.Controllers;
+namespace Kolaczyn.Controllers;
 
 [ApiController]
 [Route("[controller]")]

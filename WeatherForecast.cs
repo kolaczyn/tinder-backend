@@ -1,4 +1,4 @@
-namespace tinder_backend;
+namespace Kolaczyn;
 
 public class WeatherForecast
 {
