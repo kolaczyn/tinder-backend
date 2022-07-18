@@ -2,7 +2,7 @@ namespace Kolaczyn.Models;
 
 public class User
 {
-  public User(string name, int sex, int age)
+  public User(string name, Sex sex, int age)
   {
     this.Name = name;
     // TODO don't make id just a random number
@@ -13,6 +13,6 @@ public class User
   }
   public string Name { set; get; }
   public int Id { set; get; }
-  public int Sex { set; get; }
+  public Sex Sex { set; get; }
   public int Age { set; get; }
 }

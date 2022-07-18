@@ -9,10 +9,10 @@ public class MatchController : ControllerBase
 {
   private static readonly User[] PortalUsers = new[]
   {
-    new User("Ada", 0, 25),
-    new User("Karolina", 0, 32),
-    new User("Jagoda", 0, 20),
-    new User("Witosz", 1, 29),
+    new User("Ada", Sex.Female, 25),
+    new User("Karolina", Sex.Female, 32),
+    new User("Jagoda", Sex.Other, 20),
+    new User("Witosz", Sex.Male, 29),
 };
 
   [HttpGet(Name = "Match")]
