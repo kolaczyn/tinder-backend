@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
+using Kolaczyn.Models;
 
 namespace Kolaczyn.Controllers;
 
@@ -6,15 +7,18 @@ namespace Kolaczyn.Controllers;
 [Route("[controller]")]
 public class MatchController : ControllerBase
 {
-  private static readonly string[] LadyNames = new[]
+  private static readonly User[] PortalUsers = new[]
   {
-    "Ada", "Karolina", "Jagoda"
+    new User("Ada", 0, 25),
+    new User("Karolina", 0, 32),
+    new User("Jagoda", 0, 20),
+    new User("Witosz", 1, 29),
 };
 
   [HttpGet(Name = "Match")]
-  public IEnumerable<string> Get()
+  public User Get()
   {
-    return LadyNames.ToArray();
+    return PortalUsers[1];
 
   }
 }
