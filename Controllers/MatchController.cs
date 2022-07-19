@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Kolaczyn.Application.UseCases;
 using Kolaczyn.Domain.Model;
+using Kolaczyn.Application.Dto;
 
 namespace Kolaczyn.Controllers;
 
@@ -8,36 +9,33 @@ namespace Kolaczyn.Controllers;
 [Route("[controller]")]
 public class MatchController : ControllerBase
 {
-  private readonly GetUsersUseCase _getUsersUserCase;
-  private readonly GetUserUseCase _getUserUserCase;
-  private readonly AddUserUseCase _addUserUseCase;
-  public MatchController(GetUsersUseCase getUsersUserCase, AddUserUseCase addUserUseCase, GetUserUseCase getUserUseCase)
+  [HttpPost]
+  public async Task<ActionResult> AddUser(UserDto user, [FromServices] AddUserUseCase useCase)
   {
-    // TODO these should be [FromService]
-    _getUsersUserCase = getUsersUserCase;
-    _getUserUserCase = getUserUseCase;
-    _addUserUseCase = addUserUseCase;
-  }
+    try
+    {
+      int id = await useCase.Execute(user);
+      return Ok(id);
+    }
+    // I should use custom exception.
+    // Or use ROP
+    catch (Exception e)
+    {
 
-  [HttpPost("{id}")]
-  public async Task AddUser(int id)
-  {
-    // TODO change useCase
-    await _addUserUseCase.Execute(id);
-    return;
+      return BadRequest(e.Message);
+    }
   }
 
   [HttpGet("{id}")]
-  public async Task<User> GetUser(int id)
+  public async Task<User> GetUser(int id, [FromServices] GetUserUseCase useCase)
   {
-    // TODO change useCase
-    return await _getUserUserCase.Execute(id);
+    return await useCase.Execute(id);
   }
 
   [HttpGet]
-  public async Task<IEnumerable<User>> GetUsers()
+  public async Task<IEnumerable<User>> GetUsers([FromServices] GetUsersUseCase useCase)
   {
-    return await _getUsersUserCase.Execute();
+    return await useCase.Execute();
   }
 
 }

@@ -1,6 +1,6 @@
-namespace Kolaczyn.Domain.Model;
+namespace Kolaczyn.Application.Dto;
 
-public record User
+public class UserDto
 {
   public string? Name { get; set; }
   public int? Age { get; set; }
