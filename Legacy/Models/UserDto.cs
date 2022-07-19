@@ -1,5 +1,6 @@
 namespace Kolaczyn.Legacy.Models;
 
+[Obsolete("Move to clean arch")]
 public class UserDto
 {
   public UserDto(string name, int id, string sex, int age)

@@ -1,5 +1,7 @@
 namespace Kolaczyn.Legacy.Models;
 
+
+[Obsolete("Move to clean arch")]
 public class User
 {
   public User(string name, Sex sex, int age)
