@@ -11,7 +11,7 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-builder.Services.AddTransient<IUsersRepository, PosgresUsersRepository>();
+builder.Services.AddTransient<IUsersRepository, InMemoryUsersRepository>();
 builder.Services.AddTransient<GetUsersUseCase>();
 
 var app = builder.Build();

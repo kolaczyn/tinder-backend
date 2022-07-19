@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 using Kolaczyn.Application.UseCases;
+using Kolaczyn.Domain.Model;
 
 namespace Kolaczyn.Controllers;
 
@@ -14,7 +15,7 @@ public class MatchController : ControllerBase
   }
 
   [HttpGet(Name = "Match")]
-  public int Get()
+  public IEnumerable<User> Get()
   {
     return _getUsersUserCase.Execute();
 

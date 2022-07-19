@@ -1,4 +1,5 @@
 using Kolaczyn.Domain.Repositories;
+using Kolaczyn.Domain.Model;
 
 namespace Kolaczyn.Application.UseCases;
 
@@ -11,8 +12,8 @@ public class GetUsersUseCase
     _usersRepository = usersRepository;
   }
 
-  public int Execute()
+  public IEnumerable<User> Execute()
   {
-    return this._usersRepository.GetTwenty();
+    return this._usersRepository.GetUsers();
   }
 }
