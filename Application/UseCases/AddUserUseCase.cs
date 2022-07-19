@@ -1,5 +1,6 @@
 using Kolaczyn.Domain.Repositories;
-using Kolaczyn.Domain.Model;
+using Kolaczyn.Application.Mappers;
+using Kolaczyn.Application.Dto;
 
 namespace Kolaczyn.Application.UseCases;
 
@@ -12,9 +13,10 @@ public class AddUserUseCase
     _usersRepository = usersRepository;
   }
 
-  public async Task Execute(int id)
+  public async Task<int> Execute(UserDto user)
   {
-    await this._usersRepository.AddUser(id);
-    return;
+    var domainUser = user.ToDomain();
+    var id = await this._usersRepository.AddUser(domainUser);
+    return id;
   }
 }

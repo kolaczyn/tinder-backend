@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Kolaczyn.Application.UseCases;
 using Kolaczyn.Domain.Model;
+using Kolaczyn.Application.Dto;
 
 namespace Kolaczyn.Controllers;
 
@@ -8,11 +9,11 @@ namespace Kolaczyn.Controllers;
 [Route("[controller]")]
 public class MatchController : ControllerBase
 {
-  [HttpPost("{id}")]
-  public async Task AddUser(int id, [FromServices] AddUserUseCase useCase)
+  [HttpPost]
+  public async Task<int> AddUser(UserDto user, [FromServices] AddUserUseCase useCase)
   {
-    await useCase.Execute(id);
-    return;
+    int id = await useCase.Execute(user);
+    return id;
   }
 
   [HttpGet("{id}")]

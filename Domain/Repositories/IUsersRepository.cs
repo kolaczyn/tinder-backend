@@ -4,7 +4,7 @@ namespace Kolaczyn.Domain.Repositories;
 
 public interface IUsersRepository
 {
-  Task AddUser(int id);
+  Task<int> AddUser(User user);
   Task<User> GetUserById(int id);
   Task<IEnumerable<User>> GetUsers();
 }

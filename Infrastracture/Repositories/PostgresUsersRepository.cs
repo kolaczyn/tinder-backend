@@ -6,7 +6,7 @@ namespace Kolaczyn.Infrastructure.Repositories;
 
 public class PosgresUsersRepository : IUsersRepository
 {
-  public Task AddUser(int id)
+  public Task<int> AddUser(User user)
   {
     throw new NotImplementedException();
   }

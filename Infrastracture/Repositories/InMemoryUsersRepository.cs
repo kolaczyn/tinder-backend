@@ -6,18 +6,20 @@ namespace Kolaczyn.Infrastructure.Repositories;
 public class InMemoryUsersRepository : IUsersRepository
 {
   static Dictionary<int, User> db = new();
+  static int NextId = 0;
 
-  public async Task AddUser(int id)
+  public Task<int> AddUser(User user)
   {
-    var user = new User { Name = "Pawel", Age = 23 };
+    int id = NextId;
     db.Add(id, user);
-    return;
+    NextId++;
+    return Task.FromResult(id);
   }
 
   // TODO Maybe
-  public async Task<User> GetUserById(int id)
+  public Task<User> GetUserById(int id)
   {
-    return db[id];
+    return Task.FromResult(db[id]);
   }
 
   public async Task<IEnumerable<User>> GetUsers()
