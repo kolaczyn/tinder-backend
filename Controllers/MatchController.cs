@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Kolaczyn.Models;
 using Kolaczyn.Mapper;
+using Kolaczyn.Application.UseCases;
 
 namespace Kolaczyn.Controllers;
 
@@ -8,6 +9,12 @@ namespace Kolaczyn.Controllers;
 [Route("[controller]")]
 public class MatchController : ControllerBase
 {
+  private readonly GetUsersUseCase _getUsersUserCase;
+  // TODO add dependency injection
+  public MatchController()
+  {
+    _getUsersUserCase = new GetUsersUseCase();
+  }
   private static readonly User[] PortalUsers = new[]
   {
     new User("Ada", Sex.Female, 25),
@@ -17,9 +24,9 @@ public class MatchController : ControllerBase
 };
 
   [HttpGet(Name = "Match")]
-  public UserDto Get()
+  public int Get()
   {
-    return PortalUsers[1].MapToDto();
+    return _getUsersUserCase.Execute();
 
   }
 }
