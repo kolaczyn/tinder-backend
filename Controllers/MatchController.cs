@@ -15,23 +15,23 @@ public class MatchController : ControllerBase
   }
 
   [HttpPost]
-  public IEnumerable<User> AddUser()
+  public async Task<IEnumerable<User>> AddUser()
   {
     // TODO change useCase
-    return _getUsersUserCase.Execute();
+    return await _getUsersUserCase.Execute();
   }
 
   [HttpGet("{id}")]
-  public IEnumerable<User> GetUser(int id)
+  public async Task<IEnumerable<User>> GetUser(int id)
   {
     // TODO change useCase
-    return _getUsersUserCase.Execute();
+    return await _getUsersUserCase.Execute();
   }
 
   [HttpGet]
-  public IEnumerable<User> GetUsers()
+  public async Task<IEnumerable<User>> GetUsers()
   {
-    return _getUsersUserCase.Execute();
+    return await _getUsersUserCase.Execute();
   }
 
 }

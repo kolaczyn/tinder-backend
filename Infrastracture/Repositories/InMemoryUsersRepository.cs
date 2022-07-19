@@ -7,19 +7,20 @@ public class InMemoryUsersRepository : IUsersRepository
 {
   static Dictionary<int, User> db = new();
 
-  public void AddUser(int id)
+  public async Task AddUser(int id)
   {
     var user = new User { Name = "Pawel", Age = 23 };
     db.Add(id, user);
+    return;
   }
 
   // TODO Maybe
-  public User GetUserById(int id)
+  public async Task<User> GetUserById(int id)
   {
     return db[id];
   }
 
-  public IEnumerable<User> GetUsers()
+  public async Task<IEnumerable<User>> GetUsers()
   {
     List<User> output = new(10);
     foreach (KeyValuePair<int, User> entry in db)

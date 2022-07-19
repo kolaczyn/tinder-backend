@@ -12,8 +12,8 @@ public class GetUsersUseCase
     _usersRepository = usersRepository;
   }
 
-  public IEnumerable<User> Execute()
+  public async Task<IEnumerable<User>> Execute()
   {
-    return this._usersRepository.GetUsers();
+    return await this._usersRepository.GetUsers();
   }
 }
