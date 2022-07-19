@@ -8,36 +8,25 @@ namespace Kolaczyn.Controllers;
 [Route("[controller]")]
 public class MatchController : ControllerBase
 {
-  private readonly GetUsersUseCase _getUsersUserCase;
-  private readonly GetUserUseCase _getUserUserCase;
-  private readonly AddUserUseCase _addUserUseCase;
-  public MatchController(GetUsersUseCase getUsersUserCase, AddUserUseCase addUserUseCase, GetUserUseCase getUserUseCase)
-  {
-    // TODO these should be [FromService]
-    _getUsersUserCase = getUsersUserCase;
-    _getUserUserCase = getUserUseCase;
-    _addUserUseCase = addUserUseCase;
-  }
-
   [HttpPost("{id}")]
-  public async Task AddUser(int id)
+  public async Task AddUser(int id, [FromServices] AddUserUseCase useCase)
   {
     // TODO change useCase
-    await _addUserUseCase.Execute(id);
+    await useCase.Execute(id);
     return;
   }
 
   [HttpGet("{id}")]
-  public async Task<User> GetUser(int id)
+  public async Task<User> GetUser(int id, [FromServices] GetUserUseCase useCase)
   {
     // TODO change useCase
-    return await _getUserUserCase.Execute(id);
+    return await useCase.Execute(id);
   }
 
   [HttpGet]
-  public async Task<IEnumerable<User>> GetUsers()
+  public async Task<IEnumerable<User>> GetUsers([FromServices] GetUsersUseCase useCase)
   {
-    return await _getUsersUserCase.Execute();
+    return await useCase.Execute();
   }
 
 }
