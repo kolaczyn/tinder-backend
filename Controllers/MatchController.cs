@@ -10,10 +10,20 @@ namespace Kolaczyn.Controllers;
 public class MatchController : ControllerBase
 {
   [HttpPost]
-  public async Task<int> AddUser(UserDto user, [FromServices] AddUserUseCase useCase)
+  public async Task<ActionResult> AddUser(UserDto user, [FromServices] AddUserUseCase useCase)
   {
-    int id = await useCase.Execute(user);
-    return id;
+    try
+    {
+      int id = await useCase.Execute(user);
+      return Ok(id);
+    }
+    // I should use custom exception.
+    // Or use ROP
+    catch (Exception e)
+    {
+
+      return BadRequest(e.Message);
+    }
   }
 
   [HttpGet("{id}")]
