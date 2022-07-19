@@ -1,6 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
 using Kolaczyn.Legacy.Models;
-using Kolaczyn.Legacy.Mapper;
 using Kolaczyn.Application.UseCases;
 
 namespace Kolaczyn.Controllers;
@@ -10,11 +9,11 @@ namespace Kolaczyn.Controllers;
 public class MatchController : ControllerBase
 {
   private readonly GetUsersUseCase _getUsersUserCase;
-  // TODO add dependency injection
-  public MatchController()
+  public MatchController(GetUsersUseCase getUsersUserCase)
   {
-    _getUsersUserCase = new GetUsersUseCase();
+    _getUsersUserCase = getUsersUserCase;
   }
+
   private static readonly User[] PortalUsers = new[]
   {
     new User("Ada", Sex.Female, 25),

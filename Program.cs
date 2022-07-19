@@ -1,3 +1,7 @@
+using Kolaczyn.Domain.Repositories;
+using Kolaczyn.Infrastructure.Repositories;
+using Kolaczyn.Application.UseCases;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -6,6 +10,9 @@ builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
+builder.Services.AddTransient<IUsersRepository, PosgresUsersRepository>();
+builder.Services.AddTransient<GetUsersUseCase>();
 
 var app = builder.Build();
 
