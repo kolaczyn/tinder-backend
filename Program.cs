@@ -13,6 +13,8 @@ builder.Services.AddSwaggerGen();
 
 builder.Services.AddTransient<IUsersRepository, InMemoryUsersRepository>();
 builder.Services.AddTransient<GetUsersUseCase>();
+builder.Services.AddTransient<GetUserUseCase>();
+builder.Services.AddTransient<AddUserUseCase>();
 
 var app = builder.Build();
 

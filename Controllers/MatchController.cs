@@ -9,23 +9,29 @@ namespace Kolaczyn.Controllers;
 public class MatchController : ControllerBase
 {
   private readonly GetUsersUseCase _getUsersUserCase;
-  public MatchController(GetUsersUseCase getUsersUserCase)
+  private readonly GetUserUseCase _getUserUserCase;
+  private readonly AddUserUseCase _addUserUseCase;
+  public MatchController(GetUsersUseCase getUsersUserCase, AddUserUseCase addUserUseCase, GetUserUseCase getUserUseCase)
   {
+    // TODO these should be [FromService]
     _getUsersUserCase = getUsersUserCase;
+    _getUserUserCase = getUserUseCase;
+    _addUserUseCase = addUserUseCase;
   }
 
-  [HttpPost]
-  public async Task<IEnumerable<User>> AddUser()
+  [HttpPost("{id}")]
+  public async Task AddUser(int id)
   {
     // TODO change useCase
-    return await _getUsersUserCase.Execute();
+    await _addUserUseCase.Execute(id);
+    return;
   }
 
   [HttpGet("{id}")]
-  public async Task<IEnumerable<User>> GetUser(int id)
+  public async Task<User> GetUser(int id)
   {
     // TODO change useCase
-    return await _getUsersUserCase.Execute();
+    return await _getUserUserCase.Execute(id);
   }
 
   [HttpGet]
