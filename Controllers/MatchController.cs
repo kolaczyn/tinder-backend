@@ -11,7 +11,6 @@ public class MatchController : ControllerBase
   [HttpPost("{id}")]
   public async Task AddUser(int id, [FromServices] AddUserUseCase useCase)
   {
-    // TODO change useCase
     await useCase.Execute(id);
     return;
   }
@@ -19,7 +18,6 @@ public class MatchController : ControllerBase
   [HttpGet("{id}")]
   public async Task<User> GetUser(int id, [FromServices] GetUserUseCase useCase)
   {
-    // TODO change useCase
     return await useCase.Execute(id);
   }
 
