@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
-using Kolaczyn.Models;
-using Kolaczyn.Mapper;
+using Kolaczyn.Legacy.Models;
+using Kolaczyn.Legacy.Mapper;
 using Kolaczyn.Application.UseCases;
 
 namespace Kolaczyn.Controllers;

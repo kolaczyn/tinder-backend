@@ -1,4 +1,4 @@
-namespace Kolaczyn.Models;
+namespace Kolaczyn.Legacy.Models;
 
 public class UserDto
 {

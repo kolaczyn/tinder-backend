@@ -1,7 +1,7 @@
 using Mapster;
-using Kolaczyn.Models;
+using Kolaczyn.Legacy.Models;
 
-namespace Kolaczyn.Mapper;
+namespace Kolaczyn.Legacy.Mapper;
 
 public static class UserMapper
 {
