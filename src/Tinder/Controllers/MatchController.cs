@@ -9,6 +9,7 @@ namespace Kolaczyn.Controllers;
 [Route("[controller]")]
 public class MatchController : ControllerBase
 {
+  [Obsolete("use v2 instead")]
   [HttpPost]
   public async Task<ActionResult> AddUser(UserDto user, [FromServices] AddUserUseCase useCase)
   {
