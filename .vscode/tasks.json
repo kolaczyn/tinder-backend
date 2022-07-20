@@ -7,7 +7,18 @@
       "type": "process",
       "args": [
         "build",
-        "${workspaceFolder}/tinder-backend.csproj",
+        "${workspaceFolder}/src/Tinder/tinder-backend.csproj",
+        "/property:GenerateFullPaths=true",
+        "/consoleloggerparameters:NoSummary"
+      ],
+      "problemMatcher": "$msCompile"
+    },{
+      "label": "build:scripts",
+      "command": "dotnet",
+      "type": "process",
+      "args": [
+        "build",
+        "${workspaceFolder}/src/Scripts/Scripts.csproj",
         "/property:GenerateFullPaths=true",
         "/consoleloggerparameters:NoSummary"
       ],
@@ -19,7 +30,7 @@
       "type": "process",
       "args": [
         "publish",
-        "${workspaceFolder}/tinder-backend.csproj",
+        "${workspaceFolder}/src/Tinder/tinder-backend.csproj",
         "/property:GenerateFullPaths=true",
         "/consoleloggerparameters:NoSummary"
       ],
@@ -33,7 +44,7 @@
         "watch",
         "run",
         "--project",
-        "${workspaceFolder}/tinder-backend.csproj"
+        "${workspaceFolder}/src/Tinder/tinder-backend.csproj"
       ],
       "problemMatcher": "$msCompile"
     }

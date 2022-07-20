@@ -5,11 +5,11 @@
   "version": "0.2.0",
   "configurations": [
     {
-      "name": ".NET Core Launch (web)",
+      "name": "Tinder API: Launch",
       "type": "coreclr",
       "request": "launch",
       "preLaunchTask": "build",
-      "program": "${workspaceFolder}/bin/Debug/net6.0/tinder-backend.dll",
+      "program": "${workspaceFolder}/src/Tinder/bin/Debug/net6.0/tinder-backend.dll",
       "args": [],
       "cwd": "${workspaceFolder}",
       "stopAtEntry": false,
@@ -17,7 +17,23 @@
         "ASPNETCORE_ENVIRONMENT": "Development"
       },
       "sourceFileMap": {
-        "/Views": "${workspaceFolder}/Views"
+        "/Views": "${workspaceFolder}/src/Tinder/Views"
+      }
+    },
+    {
+      "name": "Scripts: Launch",
+      "type": "coreclr",
+      "request": "launch",
+      "preLaunchTask": "build:scripts",
+      "program": "${workspaceFolder}/src/Scripts/bin/Debug/net6.0/Scripts.dll",
+      "args": [],
+      "cwd": "${workspaceFolder}",
+      "stopAtEntry": false,
+      "env": {
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      },
+      "sourceFileMap": {
+        "/Views": "${workspaceFolder}/src/Scripts/Views"
       }
     },
     {
