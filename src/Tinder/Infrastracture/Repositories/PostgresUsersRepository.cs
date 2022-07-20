@@ -32,11 +32,8 @@ public class PosgresUsersRepository : IUsersRepository
   {
     await using (var connection = new NpgsqlConnection(_appSettings.PostgresConnectionString))
     {
-      var result = await connection.ExecuteAsync("INSERT INTO users (name, age) VALUES (@name, @age)", new { user.Name, user.Age });
-      // TODO get the correct id
-      var id = 123;
-      // TODO fix the url later
-      return $"{_appSettings.BaseUrl}/Match/{id}'";
+      var id = await connection.QueryAsync<int>("INSERT INTO users (name, age) VALUES (@name, @age) RETURNING id", new { user.Name, user.Age });
+      return $"{_appSettings.BaseUrl}/Match/{id.First()}'";
       ;
     }
   }
