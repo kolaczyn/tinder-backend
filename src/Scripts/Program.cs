@@ -3,7 +3,6 @@ using Npgsql;
 
 var app = CoconaApp.Create();
 
-
 app.AddCommand("init-db", async () =>
 {
   await using var connection = new NpgsqlConnection("Host=db;Username=postgres;Password=postgres;Database=postgres;Port=5432");
@@ -25,6 +24,5 @@ app.AddCommand("kill-db", async () =>
   };
   connection.Close();
 }).WithDescription("Kill the database").WithAliases("k");
-
 
 app.Run();
