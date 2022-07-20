@@ -1,9 +1,11 @@
+using Microsoft.Extensions.Options;
+using Npgsql;
 using Dapper;
 using Kolaczyn.Domain.Model;
 using Kolaczyn.Domain.Repositories;
+using Kolaczyn.Infrastructure.Model;
 using Kolaczyn.Infrastructure.Settings;
-using Microsoft.Extensions.Options;
-using Npgsql;
+using Kolaczyn.Infrastructure.Mappers;
 
 namespace Kolaczyn.Infrastructure.Repositories;
 
@@ -20,8 +22,6 @@ public class PosgresUsersRepository : IUsersRepository
   {
     await using (var connection = new NpgsqlConnection(_appSettings.PostgresConnectionString))
     {
-      // TODO creat class UserDb in Repo folder.
-      // and make sure this is the way to do this
       var result = await connection.ExecuteAsync("INSERT INTO users (name, age) VALUES (@name, @age)", new { user.Name, user.Age });
       return result;
       ;
@@ -33,8 +33,8 @@ public class PosgresUsersRepository : IUsersRepository
   {
     await using (var connection = new NpgsqlConnection(_appSettings.PostgresConnectionString))
     {
-      var result = await connection.QueryAsync<User>("SELECT name, age FROM users WHERE id = @id", new { Id = id });
-      return result.FirstOrDefault();
+      var result = await connection.QueryAsync<DbUser>("SELECT name, age FROM users WHERE id = @id", new { Id = id });
+      return result.FirstOrDefault().ToDomain();
     }
   }
 
@@ -42,8 +42,8 @@ public class PosgresUsersRepository : IUsersRepository
   {
     await using (var connection = new NpgsqlConnection(_appSettings.PostgresConnectionString))
     {
-      var result = await connection.QueryAsync<User>("SELECT name, age FROM users");
-      return result.AsList();
+      var result = await connection.QueryAsync<DbUser>("SELECT name, age FROM users");
+      return result.AsList().Select(x => x.ToDomain());
     }
   }
 }
