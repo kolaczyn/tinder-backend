@@ -1,5 +1,5 @@
 using Mapster;
-using Kolaczyn.Application.Dto;
+using Kolaczyn.Application.Models;
 
 namespace Kolaczyn.Application.Mappers;
 

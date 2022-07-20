@@ -28,6 +28,18 @@ public class PosgresUsersRepository : IUsersRepository
     }
   }
 
+  public async Task<string> AddUserV2(User user)
+  {
+    await using (var connection = new NpgsqlConnection(_appSettings.PostgresConnectionString))
+    {
+      var result = await connection.ExecuteAsync("INSERT INTO users (name, age) VALUES (@name, @age)", new { user.Name, user.Age });
+      // TODO get the correct id
+      var id = 123;
+      // TODO fix the url later
+      return $"http://127.0.0.1:5294/Match/{id}'";
+      ;
+    }
+  }
 
   public async Task<User> GetUserById(int id)
   {

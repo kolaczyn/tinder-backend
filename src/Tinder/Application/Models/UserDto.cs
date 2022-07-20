@@ -1,4 +1,4 @@
-namespace Kolaczyn.Application.Dto;
+namespace Kolaczyn.Application.Models;
 
 public class UserDto
 {

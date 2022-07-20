@@ -14,6 +14,7 @@ builder.Services.AddTransient<IUsersRepository, PosgresUsersRepository>();
 builder.Services.AddTransient<GetUsersUseCase>();
 builder.Services.AddTransient<GetUserUseCase>();
 builder.Services.AddTransient<AddUserUseCase>();
+builder.Services.AddTransient<AddUserV2UseCase>();
 builder.Services.AddTransient<AppSettings>();
 
 var app = builder.Build();
