@@ -1,4 +1,15 @@
-﻿// See https://aka.ms/new-console-template for more information
-Console.WriteLine("Hello, World!");
-Console.WriteLine("XD");
-Console.WriteLine("LOL");
+﻿using Cocona;
+
+var app = CoconaApp.Create();
+
+app.AddCommand("init-db", () =>
+{
+  Console.WriteLine("db init");
+}).WithDescription("Initialize the database").WithAliases("i");
+app.AddCommand("kill-db", () =>
+{
+  Console.WriteLine("db kill");
+}).WithDescription("Kill the database").WithAliases("k");
+
+
+app.Run();
