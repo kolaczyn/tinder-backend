@@ -1,7 +1,7 @@
-using Kolaczyn.Domain.Repositories;
-using Kolaczyn.Infrastructure.Repositories;
-using Kolaczyn.Application.UseCases;
-using Kolaczyn.Infrastructure.Settings;
+using Tinder.Domain.Repositories;
+using Tinder.Infrastructure.Repositories;
+using Tinder.Application.UseCases;
+using Tinder.Infrastructure.Settings;
 
 var builder = WebApplication.CreateBuilder(args);
 

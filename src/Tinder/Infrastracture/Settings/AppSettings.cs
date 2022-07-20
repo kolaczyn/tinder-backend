@@ -1,4 +1,4 @@
-namespace Kolaczyn.Infrastructure.Settings;
+namespace Tinder.Infrastructure.Settings;
 
 public class AppSettings
 {

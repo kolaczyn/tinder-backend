@@ -1,9 +1,9 @@
-using Kolaczyn.Domain.Repositories;
-using Kolaczyn.Domain.Validators;
-using Kolaczyn.Application.Mappers;
-using Kolaczyn.Application.Models;
+using Tinder.Domain.Repositories;
+using Tinder.Domain.Validators;
+using Tinder.Application.Mappers;
+using Tinder.Application.Models;
 
-namespace Kolaczyn.Application.UseCases;
+namespace Tinder.Application.UseCases;
 
 public class AddUserUseCase
 {

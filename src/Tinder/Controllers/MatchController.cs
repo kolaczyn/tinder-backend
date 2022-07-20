@@ -1,9 +1,9 @@
 using Microsoft.AspNetCore.Mvc;
-using Kolaczyn.Application.UseCases;
-using Kolaczyn.Domain.Model;
-using Kolaczyn.Application.Models;
+using Tinder.Application.UseCases;
+using Tinder.Domain.Model;
+using Tinder.Application.Models;
 
-namespace Kolaczyn.Controllers;
+namespace Tinder.Controllers;
 
 [ApiController]
 [Route("[controller]")]

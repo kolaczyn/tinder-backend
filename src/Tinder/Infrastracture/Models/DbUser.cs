@@ -1,4 +1,4 @@
-namespace Kolaczyn.Infrastructure.Model;
+namespace Tinder.Infrastructure.Model;
 
 public class DbUser
 {

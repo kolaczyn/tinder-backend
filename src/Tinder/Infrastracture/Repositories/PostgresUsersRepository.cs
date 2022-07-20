@@ -1,13 +1,13 @@
 using Microsoft.Extensions.Options;
 using Npgsql;
 using Dapper;
-using Kolaczyn.Domain.Model;
-using Kolaczyn.Domain.Repositories;
-using Kolaczyn.Infrastructure.Model;
-using Kolaczyn.Infrastructure.Settings;
-using Kolaczyn.Infrastructure.Mappers;
+using Tinder.Domain.Model;
+using Tinder.Domain.Repositories;
+using Tinder.Infrastructure.Model;
+using Tinder.Infrastructure.Settings;
+using Tinder.Infrastructure.Mappers;
 
-namespace Kolaczyn.Infrastructure.Repositories;
+namespace Tinder.Infrastructure.Repositories;
 
 public class PosgresUsersRepository : IUsersRepository
 {

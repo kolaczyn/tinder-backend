@@ -1,6 +1,6 @@
-using Kolaczyn.Domain.Model;
+using Tinder.Domain.Model;
 
-namespace Kolaczyn.Domain.Repositories;
+namespace Tinder.Domain.Repositories;
 
 public interface IUsersRepository
 {

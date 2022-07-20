@@ -1,8 +1,8 @@
 using Mapster;
-using Kolaczyn.Domain.Model;
-using Kolaczyn.Infrastructure.Model;
+using Tinder.Domain.Model;
+using Tinder.Infrastructure.Model;
 
-namespace Kolaczyn.Infrastructure.Mappers;
+namespace Tinder.Infrastructure.Mappers;
 
 public static class UserMap
 {

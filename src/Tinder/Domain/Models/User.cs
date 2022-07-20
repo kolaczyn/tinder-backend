@@ -1,4 +1,4 @@
-namespace Kolaczyn.Domain.Model;
+namespace Tinder.Domain.Model;
 
 public record User
 {

@@ -1,7 +1,7 @@
 using FluentValidation;
-using Kolaczyn.Domain.Model;
+using Tinder.Domain.Model;
 
-namespace Kolaczyn.Domain.Validators;
+namespace Tinder.Domain.Validators;
 
 public class UserValidator : AbstractValidator<User>
 {
