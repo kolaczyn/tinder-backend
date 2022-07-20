@@ -40,30 +40,4 @@ public class MatchController : ControllerBase
     return await useCase.Execute();
   }
 
-  // FIXME this is pretty dumb
-  [HttpGet("initDb")]
-  public async Task InitDb()
-  {
-    await using var connection = new NpgsqlConnection("Host=db;Username=postgres;Password=postgres;Database=postgres;Port=5432");
-    await connection.OpenAsync();
-    await using (var cmd = new NpgsqlCommand("CREATE TABLE users(id SERIAL PRIMARY KEY, name TEXT NOT NULL, age INT NOT NULL)", connection))
-    {
-      var xd = await cmd.ExecuteReaderAsync();
-    };
-    connection.Close();
-  }
-  // FIXME this is pretty dumb
-  [HttpDelete("deleteDb")]
-  public async Task DeleteDb()
-  {
-    await using var connection = new NpgsqlConnection("Host=db;Username=postgres;Password=postgres;Database=postgres;Port=5432");
-    await connection.OpenAsync();
-    await using (var cmd = new NpgsqlCommand("DROP TABLE users", connection))
-    {
-      var xd = await cmd.ExecuteReaderAsync();
-    };
-    connection.Close();
-
-  }
-
 }
