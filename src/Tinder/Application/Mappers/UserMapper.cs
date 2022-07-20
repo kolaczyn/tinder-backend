@@ -1,15 +1,15 @@
 using Mapster;
-using Kolaczyn.Application.Dto;
+using Tinder.Application.Models;
 
-namespace Kolaczyn.Application.Mappers;
+namespace Tinder.Application.Mappers;
 
 public static class UserMapper
 {
-  public static Kolaczyn.Domain.Model.User ToDomain(this UserDto dto)
+  public static Tinder.Domain.Model.User ToDomain(this UserDto dto)
   {
-    return dto.Adapt<Kolaczyn.Domain.Model.User>();
+    return dto.Adapt<Tinder.Domain.Model.User>();
   }
-  public static UserDto ToDto(this Kolaczyn.Domain.Model.User user)
+  public static UserDto ToDto(this Tinder.Domain.Model.User user)
   {
     return user.Adapt<UserDto>();
   }

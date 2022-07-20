@@ -5,26 +5,25 @@ using Tinder.Application.Models;
 
 namespace Tinder.Application.UseCases;
 
-public class AddUserUseCase
+public class AddUserV2UseCase
 {
   private readonly IUsersRepository _usersRepository;
   private readonly UserValidator _userValidator;
 
-  public AddUserUseCase(IUsersRepository usersRepository)
+  public AddUserV2UseCase(IUsersRepository usersRepository)
   {
     _usersRepository = usersRepository;
     _userValidator = new UserValidator();
   }
 
-  public async Task<int> Execute(UserDto user)
+  public async Task<ResourceUrlDto> Execute(UserDto user)
   {
     var domain = user.ToDomain();
     var result = _userValidator.Validate(domain);
     if (result.IsValid)
     {
-
-      var id = await this._usersRepository.AddUser(domain);
-      return id;
+      var url = await this._usersRepository.AddUserV2(domain);
+      return new ResourceUrlDto { ResourceUrl = url };
     }
     throw new Exception(result.ToString());
   }

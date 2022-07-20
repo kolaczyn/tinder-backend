@@ -1,13 +1,13 @@
 using Microsoft.Extensions.Options;
 using Npgsql;
 using Dapper;
-using Kolaczyn.Domain.Model;
-using Kolaczyn.Domain.Repositories;
-using Kolaczyn.Infrastructure.Model;
-using Kolaczyn.Infrastructure.Settings;
-using Kolaczyn.Infrastructure.Mappers;
+using Tinder.Domain.Model;
+using Tinder.Domain.Repositories;
+using Tinder.Infrastructure.Model;
+using Tinder.Infrastructure.Settings;
+using Tinder.Infrastructure.Mappers;
 
-namespace Kolaczyn.Infrastructure.Repositories;
+namespace Tinder.Infrastructure.Repositories;
 
 public class PosgresUsersRepository : IUsersRepository
 {
@@ -28,6 +28,15 @@ public class PosgresUsersRepository : IUsersRepository
     }
   }
 
+  public async Task<string> AddUserV2(User user)
+  {
+    await using (var connection = new NpgsqlConnection(_appSettings.PostgresConnectionString))
+    {
+      var id = await connection.QueryAsync<int>("INSERT INTO users (name, age) VALUES (@name, @age) RETURNING id", new { user.Name, user.Age });
+      return $"{_appSettings.BaseUrl}/Match/{id.First()}'";
+      ;
+    }
+  }
 
   public async Task<User> GetUserById(int id)
   {

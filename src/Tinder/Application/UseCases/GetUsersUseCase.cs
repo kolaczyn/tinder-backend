@@ -1,7 +1,7 @@
-using Kolaczyn.Domain.Repositories;
-using Kolaczyn.Domain.Model;
+using Tinder.Domain.Repositories;
+using Tinder.Domain.Model;
 
-namespace Kolaczyn.Application.UseCases;
+namespace Tinder.Application.UseCases;
 
 public class GetUsersUseCase
 {

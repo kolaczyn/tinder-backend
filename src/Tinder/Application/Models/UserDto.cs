@@ -1,4 +1,4 @@
-namespace Kolaczyn.Application.Dto;
+namespace Tinder.Application.Models;
 
 public class UserDto
 {

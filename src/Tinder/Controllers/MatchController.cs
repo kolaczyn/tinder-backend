@@ -1,16 +1,15 @@
 using Microsoft.AspNetCore.Mvc;
-using Npgsql;
-using Dapper;
-using Kolaczyn.Application.UseCases;
-using Kolaczyn.Domain.Model;
-using Kolaczyn.Application.Dto;
+using Tinder.Application.UseCases;
+using Tinder.Domain.Model;
+using Tinder.Application.Models;
 
-namespace Kolaczyn.Controllers;
+namespace Tinder.Controllers;
 
 [ApiController]
 [Route("[controller]")]
 public class MatchController : ControllerBase
 {
+  [Obsolete("use v2 instead")]
   [HttpPost]
   public async Task<ActionResult> AddUser(UserDto user, [FromServices] AddUserUseCase useCase)
   {
@@ -23,7 +22,22 @@ public class MatchController : ControllerBase
     // Or use ROP
     catch (Exception e)
     {
+      return BadRequest(e.Message);
+    }
+  }
 
+  [HttpPost("v2")]
+  public async Task<ActionResult<ResourceUrlDto>> AddUserV2(UserDto user, [FromServices] AddUserV2UseCase useCase)
+  {
+    try
+    {
+      var resourceUrl = await useCase.Execute(user);
+      return Ok(resourceUrl);
+    }
+    // I should use custom exception.
+    // Or use ROP
+    catch (Exception e)
+    {
       return BadRequest(e.Message);
     }
   }
