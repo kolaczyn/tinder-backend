@@ -36,7 +36,7 @@ public class PosgresUsersRepository : IUsersRepository
       // TODO get the correct id
       var id = 123;
       // TODO fix the url later
-      return $"http://127.0.0.1:5294/Match/{id}'";
+      return $"{_appSettings.BaseUrl}/Match/{id}'";
       ;
     }
   }
