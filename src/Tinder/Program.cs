@@ -1,7 +1,6 @@
-using Tinder.Domain.Repositories;
-using Tinder.Infrastructure.Repositories;
 using Tinder.Application.UseCases;
 using Tinder.Infrastructure.Settings;
+using Tinder.Infrastructure.IoC;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -10,12 +9,11 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.Configure<AppSettings>(builder.Configuration.GetSection(AppSettings.SectionName));
 
-builder.Services.AddTransient<IUsersRepository, PosgresUsersRepository>();
 builder.Services.AddTransient<GetUsersUseCase>();
 builder.Services.AddTransient<GetUserUseCase>();
 builder.Services.AddTransient<AddUserUseCase>();
 builder.Services.AddTransient<AddUserV2UseCase>();
-builder.Services.AddTransient<AppSettings>();
+builder.Services.AddServices();
 
 var app = builder.Build();
 
