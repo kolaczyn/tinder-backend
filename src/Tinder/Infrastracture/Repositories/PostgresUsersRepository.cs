@@ -9,11 +9,11 @@ using Tinder.Infrastructure.Mappers;
 
 namespace Tinder.Infrastructure.Repositories;
 
-public class PosgresUsersRepository : IUsersRepository
+public class PostgresUsersRepository : IUsersRepository
 {
   private readonly AppSettings _appSettings;
 
-  public PosgresUsersRepository(IOptions<AppSettings> appSettings)
+  public PostgresUsersRepository(IOptions<AppSettings> appSettings)
   {
     _appSettings = appSettings.Value;
   }

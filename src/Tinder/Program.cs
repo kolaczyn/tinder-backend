@@ -10,7 +10,7 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.Configure<AppSettings>(builder.Configuration.GetSection(AppSettings.SectionName));
 
-builder.Services.AddTransient<IUsersRepository, PosgresUsersRepository>();
+builder.Services.AddTransient<IUsersRepository, PostgresUsersRepository>();
 builder.Services.AddTransient<GetUsersUseCase>();
 builder.Services.AddTransient<GetUserUseCase>();
 builder.Services.AddTransient<AddUserUseCase>();
