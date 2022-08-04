@@ -11,6 +11,7 @@ app.AddCommand("init-db", async () =>
     CREATE TABLE users (
       id SERIAL PRIMARY KEY,
       name TEXT NOT NULL,
+      gender INT NOT NULL,
       age INT NOT NULL)
     ", connection))
   {
